@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', { css:'register_style' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+	    <%- include('../partials/headerSinLogin') %>
+        <!-- /header --> 
+
+        <article class="header__usuarioregister"> 
+            
+            <h1> Completa tus datos.</h1>
+            <a class="create__business" href="/users/registerbusiness">crea una cuenta empresa</a>
+            <% if (typeof errors != 'undefined') { %>
+                <ul>
+                    <% for( let i = 0; i < errors.length; i++ ) { %>
+                        <li style="color:red">
+                            <%= errors[i].msg %> 
+                        </li>
+                    <% } %>
+                </ul>
+            <% } %>
+            <!-- esto se usa cuando hay q cargar imagen <form action="/users/register" method="post" enctype="multipart/form-data"> -->
+            <form action="/users/register" method="post">
+
+                <input class="input__nombre" type="text" name="name" placeholder="Nombre">
+                <input class="input__nombre" type="text" name="lastname" placeholder="Apellido">
+    
+            
+                <h2>Selecciona provincia</h2>
+                <select class="input__nombre" name="provincia" id="provincia">
+                    <option value="bsas">Buenos Aires</option>
+                    <option value="capfed">C.A.B.A.</option>
+                    <option value="cata">Catamarca</option>
+                    <option value="chac">Chaco</option>
+                    <option value="chub">Chubut</option>
+                    <option value="cord">Córdoba</option>
+                    <option value="corri">Corrientes</option>
+                    <option value="entr">Entre Ríos</option>
+                    <option value="form">Formosa</option>
+                    <option value="Jujuy">Jujuy</option>
+                    <option value="lapam">La Pampa</option>
+                    <option value="lario">La Rioja</option>
+                    <option value="mdz">Mendoza</option>
+                    <option value="misio">Misiones</option>
+                    <option value="nqn">Neuquén</option>
+                    <option value="rion">Rio Negro</option>
+                    <option value="salta">Salta</option>
+                    <option value="sanju">San Juan</option>
+                    <option value="sanlu">San Luis</option>
+                    <option value="sancru">Santa Cruz</option>
+                    <option value="sanfe">Santa Fe</option>
+                    <option value="santia">Santiago del Estero</option>
+                    <option value="tierr">Tierra del Fuego</option>
+                    <option value="tucu">Tucumán</option>
+                </select>
+    
+                <h2>Tipo de Documento</h2>
+                <select class="input__nombre" name="identi" id="tipodni">
+                    <option value="dni">DNI</option>
+                    <option value="LC">Libr. civica</option>
+                    <option value="LE">Libr. enrolamiento</option>
+                </select>
+                <textarea class="input__nombre" name="identificacion" id="dni" cols="30" rows="1" placeholder="1234567"></textarea>
+        
+                <h2>Que preferis?</h2>
+                <p> 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="minutas">Minutas 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="Vegana">Vegana 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="Vegetariana">Vegetariana <br>
+                    <input class="input__nombre" type="checkbox" name="tipo" value="bebidas">Bebidas 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="Etnicas">Etnicas  
+                    <input class="input__nombre" type="checkbox" name="tipo" value="pasta">Pastas <br>
+                    <input class="input__nombre" type="checkbox" name="tipo" value="carne">Carnes
+                    <input class="input__nombre" type="checkbox" name="tipo" value="plato">Al Plato  
+                    <input class="input__nombre" type="checkbox" name="tipo" value="otro">Otros 
+                </p>
+    
+                <section class="input_login"> 
+                    <input class="input__email" type="email" id="email" name="email" placeholder="Tu dirección de E-mail">
+                    
+                    <input class="input__password" type="password" name="password" placeholder="Contraseña">
+                    <input class="input__password" type="password" name="password-repeat" placeholder="Repetir Contraseña">
+                </section>
+    
+                <section class="button_register"> 
+                    <button class="button__reset" type="submit" name="button_reset">Limpiar campos</button>
+                    <button class="button__submit" type="submit" name="button_submit">Enviar formulario</button>
+                </section>                      
+            </form>
+            
+        </article>    
+
+        <!-- footer -->
+        <%- include('../partials/footer') %> 
+        <!-- /footer -->
+    </div>
+</body>
+</html>

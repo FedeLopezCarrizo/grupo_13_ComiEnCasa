@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head', { css:'index_style' } )  %> 
+  <body>
+    <div class="container">
+        
+      <!-- header -->
+	    <%- include('partials/header') %>
+      <!-- /header -->    
+	    
+      <!-- busqueda -->
+      <section class="section__search">
+          <input class="input__search" type="text" name="search" placeholder="Busca eso que queres hoy...">
+          <button class="button__search" type="submit" name="button-search">Buscar</button>
+      </section>
+      
+      <!-- ultima visita -->
+      <section class="section__suggestions">
+          <article class="article__suggestions__title">
+              <h2>Basado en tu última visita</h2>
+          </article>         
+          <article class="article__suggestion">
+               <a href="/products/detail" ><img class="img__suggestions" src="/images/milanesa2.jpg" alt="ultima visita"> </a>
+          </article>
+      </section>
+
+      <!-- sugerencias -->
+      <section class="section__suggestions">
+          <article class="article__suggestions__title">
+              <h2>Las mejores sugerencias</h2>
+          </article>         
+          <article class="article__suggestion">
+               <a href="#"><img class="img__suggestions" src="/images/sugerencia_bebida.png" alt="sugerencia_bebida"> </a>
+          </article>
+          <article class="article__suggestion">
+              <a href="#"><img class="img__suggestions" src="/images/sugerencia_minuta.png" alt="sugerencia_minuta"> </a>
+          </article>
+          <article class="article__suggestion">
+              <a href="#"><img class="img__suggestions" src="/images/sugerencia_postre.png" alt="sugerencia_postre"> </a>
+          </article>
+          <article class="article__suggestion">
+              <a href="#"><img class="img__suggestions" src="/images/sugerencia_veggie.png" alt="sugerencia_veggie"> </a>
+          </article>
+      </section>
+
+      <!-- comentarios -->
+      <section class="section__comments">
+          <article class="article__comments__title">
+              <h2>Nuestros clientes</h2>
+          </article>         
+          <article class="article__comments__title">  
+              <h4>Opiniones de usuarios que te pueden ayudar con su experiencia</h4>
+          </article>         
+          <article class="article__comments">
+              <img class="img__comments" src="/images/cliente1.jpg" alt="opinion cliente 1">
+              <span class="name__comments">Federico</span>
+              <p class="p__comments">Tremendas las milanesas a la napolitana! De lo mejor del mercado</p>
+              <span class="name__comments">El loco Milanga - Avenida Alem 1510</span>
+              <span class="date__comments">16 sep, 2020</span>
+          </article>
+          <article class="article__comments">
+              <img class="img__comments" src="/images/cliente2.jpg" alt="opinion cliente 2">
+              <span class="name__comments">Diego</span>
+              <p class="p__comments">Muy buenas las hamburguesas. Muy completas!</p>
+              <span class="name__comments">Burger Prince - Zapiola 1036</span>
+              <span class="date__comments">8 sep, 2020</span>
+          </article>
+          <article class="article__comments">
+              <img class="img__comments" src="/images/cliente3.jpg" alt="opinion cliente 3">
+              <span class="name__comments">Roman</span>
+              <p class="p__comments">Muy buena la sección de ofertas. Me ayudó a elegir el menú.</p>
+              <span class="name__comments">La casa de las comidas - Alsina 1517</span>   
+              <span class="date__comments">10 sep, 2020</span> 
+          </article>
+      </section>
+
+      <!-- footer -->
+	    <%- include('partials/footer') %>
+	    <!-- /footer -->
+    </div>
+  </body>
+</html>

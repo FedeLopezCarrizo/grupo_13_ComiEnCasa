@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', { css:'productCart_style' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+            
+        <!-- busqueda -->
+		<section class="section__search">
+            <input class="input__search" type="text" name="search" placeholder="Busca eso que queres hoy...">
+            <button class="button__search" type="submit" name="button-search">Buscar</button>
+        </section>
+        
+        <!-- producto -->
+        <section class="section__product">
+
+            <article class="article__product"> 
+                <img class="img__product" src="/images/milanesa2.jpg" alt="">
+                
+                <article class="article__product__description">
+                    <a href="/productDetail" class="a__detailProduct">Milanesa con panceta y huevos.</a>
+                    <span class="price__currency">$ 1600</span>
+
+                    <select class="select__cantidad">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                      <button class="button__delete" type="submit" name="button-delete">Eliminar</button>
+                </article>
+            </article>
+        </section>
+
+        <!-- total carrito -->
+        <section class="section__summary">
+            <article class="article__summary"> 
+                <span class="price__">Total</span>
+                <span class="price__">$ 1600</span>
+            </article>
+        </section>
+
+        <button class="button__buy" type="submit" name="button-buy">Finalizar compra</button>
+
+         <!-- sugerencias -->
+         <section class="section__suggestions">
+            <article class="article__suggestions__title">
+                <h2>Las mejores sugerencias</h2>
+            </article>         
+            <article class="article__suggestion">
+                 <a href="#"><img class="img__suggestions" src="/images/sugerencia_bebida.png" alt="sugerencia_bebida"> </a>
+            </article>
+            <article class="article__suggestion">
+                <a href="#"><img class="img__suggestions" src="/images/sugerencia_minuta.png" alt="sugerencia_minuta"> </a>
+            </article>
+            <article class="article__suggestion">
+                <a href="#"><img class="img__suggestions" src="/images/sugerencia_postre.png" alt="sugerencia_postre"> </a>
+            </article>
+            <article class="article__suggestion">
+                <a href="#"><img class="img__suggestions" src="/images/sugerencia_veggie.png" alt="sugerencia_veggie"> </a>
+            </article>
+        </section>
+
+        <!-- footer -->
+        <%- include('../partials/footer') %> 
+        <!-- /footer -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<header class="header__main">            
+    <a href="/"><img src="/images/banner.png" alt="logotipo" class="logo"></a>
+
+    <!-- Top Navigation Menu -->
+    <div class="topnav">             
+        <div id="myLinks">
+            <a class="topnav__links" href="#">Categorias</a>
+            <a class="topnav__links" href="#">Mis Pedidos</a>
+            <a class="topnav__links" href="#">Ofertas</a>
+            <a class="topnav__links" href="#">Empresas</a>
+            <a class="topnav__links" href="#">Preguntas Frecuentes</a>
+        </div>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <!-- <i class="fa fa-bars"></i> -->
+            <img class="menu__burger" src="/images/icon-burger.svg" alt="menu">
+        </a>
+    </div>
+</header>
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+</script>

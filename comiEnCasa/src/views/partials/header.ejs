@@ -1,0 +1,49 @@
+<header class="header__main">            
+    <a href="/"><img src="/images/banner.png" alt="logotipo" class="logo"></a>
+    
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <article class="header__loginregister">     
+            <a href="javascript:void(0);" onclick="myFunction()">
+                <button class="btn-toggle-navbar">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </a>     
+
+            <nav id="myLinks" class="main-navbar">
+                <ul class="left-navbar">
+                    <li><a href="#" class="topnav__links">Categorias</a></li>
+                    <li><a href="#" class="topnav__links">Mis Pedidos</a></li>
+                    <li><a href="#" class="topnav__links">Ofertas</a></li>
+                    <li><a href="#" class="topnav__links">Empresas</a></li>
+                    <li><a href="#" class="topnav__links">Preguntas Frecuentes</a></li>
+                </ul>
+                <ul class="right-navbar">
+                    <li><a href="/users/register" class="topnav__links">Creá tu cuenta <i class="far fa-address-card"></i></a></li>
+                    <li><a href="/users/login" class="topnav__links">Ingresá <i class="fas fa-sign-in-alt"></i></a></li>
+                </ul>          
+            </nav>
+
+
+            <a href="/products/store">
+                <div class="icon-cart">
+                    <div class="cart-line-1" style="background-color: #E5E9EA"></div>
+                    <div class="cart-line-2" style="background-color: #E5E9EA"></div>
+                    <div class="cart-line-3" style="background-color: #E5E9EA"></div>
+                    <div class="cart-wheel" style="background-color: #E5E9EA"></div>
+                </div>
+            </a>
+        </article>     
+    </div>
+</header>
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+</script>

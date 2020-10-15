@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', { css:'productDetail_style' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+            
+        <!-- busqueda -->
+		<section class="section__search">
+            <input class="input__search" type="text" name="search" placeholder="Busca eso que queres hoy...">
+            <button class="button__search" type="submit" name="button-search">Buscar</button>
+        </section>
+        
+        <!-- detalle del producto -->
+        <section class="product__detail"> 
+            <h1 class="product__detail_titulo">Milanesa completa</h1>
+            <h2> "Tapa Arterias"</h2>
+
+            <div class="product__detail_img">
+                <section class="product_img"> 
+                    <img class="mySlides" src="/images/milanesa2.jpg" style="width:100%">
+                    <img class="mySlides" src="/images/milanesa3.jpg" style="width:100%">
+                    <img class="mySlides" src="/images/milanesa4.jpg" style="width:100%">
+                </section>
+            </div>    
+                <div class="button_img"> 
+                    <button class="button-left" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="button-right" onclick="plusDivs(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <section class="descripcion__producto"> 
+                <h3>Descripción</h3>
+                    <p>
+                        <ul>
+                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, fugiat.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur.</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus porro 
+                                ducimus ipsa!</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Ea dolorum excepturi velit.</li>
+                        </ul>   
+                    </p>
+            </section>
+
+            <section class="product__detail_cantidad">         
+                <h3>Stock disponible</h3>
+                <!-- <div class="cantidad_pedido">
+                    <button type="button_menos" class="cantidad_menos">-</button> 
+                    <span>1</span>
+                    <button type="button_mas" class="cantidad_mas">+</button>
+                </div> -->
+               
+                <!-- Trigger/Open The Modal -->
+                <button id="myBtn" class="btn__quantity">Cantidad: 1</button>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Elegí cantidad</h2>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li><button class="modal__body_button">1 unidad</button></li>
+                                <li><button class="modal__body_button">2 unidades</button></li>
+                                <li><button class="modal__body_button">3 unidades</button></li>
+                                <li><button class="modal__body_button">4 unidades</button></li>
+                            </ul>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="aclaracion"> 
+                    <h3> Queres aclarar algo? </h3>
+                    <article class="textarea"> 
+                        <textarea name="aclaracion" id="aclarar" cols="30" rows="5"></textarea>
+                    </article>
+                </div>                         
+            </section>
+
+            <section class="product__detail_button">
+                <button class="product__detail_button" type="submit" name="button-product">Agregar al carrito</button>
+            </section>
+
+            <section class="product__detail_masdelvendedor">
+                <a href="#">Más productos del vendedor</a>
+            </section>
+        </section>    
+
+        <!-- sugerencias -->
+        <section class="section__suggestions">
+            <article class="article__suggestions__title">
+                <h2>Las mejores sugerencias</h2>
+            </article>         
+            <article class="article__suggestion">
+                 <a href="#"><img class="img__suggestions" src="/images/sugerencia_bebida.png" alt="sugerencia_bebida"> </a>
+            </article>
+            <article class="article__suggestion">
+                <a href="#"><img class="img__suggestions" src="/images/sugerencia_minuta.png" alt="sugerencia_minuta"> </a>
+            </article>
+            <article class="article__suggestion">
+                <a href="#"><img class="img__suggestions" src="/images/sugerencia_postre.png" alt="sugerencia_postre"> </a>
+            </article>
+            <article class="article__suggestion">
+                <a href="#"><img class="img__suggestions" src="/images/sugerencia_veggie.png" alt="sugerencia_veggie"> </a>
+            </article>
+        </section>
+
+        <!-- footer -->
+        <%- include('../partials/footer') %> 
+        <!-- /footer -->
+    </div>
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = x.length}
+
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            x[slideIndex-1].style.display = "block";  
+        }
+    </script>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+    </script>
+</body>
+</html>
