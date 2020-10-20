@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', { css:'NewProduct_style' } ) %>
+<body>
+    <div class="container">
+
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+
+    <!-- busqueda -->
+		<section class="section__search">
+            <input class="input__search" type="text" name="search" placeholder="Busca eso que queres hoy...">
+            <button class="button__search" type="submit" name="button-search">Buscar</button>
+        </section>
+
+        <section class="detalle_carga">
+            <h1>Carga tu nuevo producto.</h1>
+            <div class="cargaDeDatos">
+               <p>  <input class="tituloProducto" type="text" name="tituloProducto" placeholder="Nombre del producto"> </p>
+               
+               <div class="cargaImg"> 
+                <label for="img">Subi tus fotos:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit" value="Enviar">
+               </div>
+               <div class="DescripcionProducto">
+                <p><label for="">Descripcion del producto:</label></p>
+                <textarea name="Descripcion" id="Descripcion" cols="30" rows="5"></textarea>
+               </div>
+               <h2> Categorias </h2>
+                <p> 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="minutas">Minutas 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="Vegana">Vegana 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="Vegetariana">Vegetariana <br>
+                    <input class="input__nombre" type="checkbox" name="tipo" value="bebidas">Bebidas 
+                    <input class="input__nombre" type="checkbox" name="tipo" value="Etnicas">Etnicas  
+                    <input class="input__nombre" type="checkbox" name="tipo" value="pasta">Pastas <br>
+                    <input class="input__nombre" type="checkbox" name="tipo" value="carne">Carnes
+                    <input class="input__nombre" type="checkbox" name="tipo" value="plato">Al Plato  
+                    <input class="input__nombre" type="checkbox" name="tipo" value="otro">Otros <br>
+                    <input class="input__nombre" type="checkbox" name="tipo" value="vianda">Apto vianda?
+                </p>
+                <div class="precioProducto"> 
+                <h2 class="precio"> Precio </h2>
+                <p><label for="">Valor:</label></p>
+                <textarea name="precio" id="precio" cols="30" rows="1"></textarea>
+                </div>
+            </div>
+
+        </section>
+        <section class="button_register"> 
+            <button class="button__reset" type="submit" name="button_reset">Limpiar campos</button>
+            <button class="button__submit" type="submit" name="button_submit">Enviar</button>
+        </section>
+        <!-- footer -->
+        <%- include('../partials/footer') %> 
+        <!-- /footer -->
+    </div>
+    
+</body>
+</html>

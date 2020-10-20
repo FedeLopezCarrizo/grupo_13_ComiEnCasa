@@ -8,13 +8,14 @@
 	    <%- include('../partials/headerSinLogin') %>
         <!-- /header --> 
         
-        <article class="header__usuarioregisterbusiness">     
-            <h1> Completa tus datos.</h1> 
-            <a class="create__personal" href="/users/register">crea una cuenta personal</a>
+        <article class="header__usuarioregisterbusiness">  </article>   
+            <h1 class="Titulo_pagina"> Completa tus datos.</h1> 
+            <div class="date_personal"> 
+            <a class="create__personal" href="/users/register">crea una cuenta personal</a> <br>
                 
             <input class="input__nombre" type="text" name="name" placeholder="Nombre">
             <input class="input__nombre" type="text" name="lastname" placeholder="Apellido">
-                
+            </div>    
             <article class="seleccion_provincia">
                 <h2>Selecciona provincia</h2>
                 <select class="input__nombre" name="provincia" id="provincia">
@@ -44,9 +45,8 @@
                     <option value="tucu">Tucumán</option>
                 </select>
             </article>
-
-            <article class="numer_id"> 
-                <h2>CUIT / CUIL</h2>
+            <h2>CUIT / CUIL</h2>
+            <article class="numer_id">        
                 <select class="input__nombre" name="identi" id="tipodni">
                     <option value="cuit">cuit</option>
                     <option value="cuil">cuil</option>
@@ -77,7 +77,7 @@
                 <p class="botton__sumit"> <button type="reset">Limpiar campos</button> </p>
                 <p class="botton__sumit"> <button type="submit">Enviar formulario</button> </p>
             </section>         
-        </article>
+        
                    
          <!-- footer -->
          <%- include('../partials/footer') %> 

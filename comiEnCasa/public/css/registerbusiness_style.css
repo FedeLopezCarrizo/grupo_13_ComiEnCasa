@@ -8,6 +8,11 @@
 
 .container{
     font-family: 'league_spartanbold';
+    display: flex;
+}
+
+.Titulo_pagina{
+    text-align: center;
 }
 
 .seleccion_provincia h2{
@@ -27,7 +32,7 @@
 }
 
 .preference {
-    text-align: center;
+    justify-content: center;
 }
 
 .topnav {
@@ -81,18 +86,20 @@
 }
 
 .header__usuarioregisterbusiness h1{
+    display: flex;
     text-align: center;
 }
 
-.create__personal{
+.date_personal {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+}
+.create__personal{
+    display: grid;
     padding-bottom: 5px;
 }
-
-.input_mailpass{
-    display: flex;
-    flex-direction: column; 
+create__personal a {
+    text-align: end;
 }
 
 .input__email{
@@ -103,11 +110,9 @@
     font-size: 14px;
     margin-top: 5px;
 }
-
 .input__pass{
     border-radius: 4px;
     color: #1b1825;
-    font-style: italic;
     padding: 8px 16px;
     font-size: 14px;
     margin-top: 5px;
@@ -233,6 +238,23 @@
 @media (min-width:768px){      
     .topnav a.icon {
         padding: 5px 20px;
+    }
+    .header__usuarioregisterbusiness{
+        text-align: center;
+    }
+    .container{
+        justify-content: center;
+    }
+    .input__pass{
+        border-radius: 4px;
+        color: #1b1825;
+        padding: 8px 16px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    .numer_id{
+        display: flex;
+        
     }
 }
 

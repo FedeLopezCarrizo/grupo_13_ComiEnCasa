@@ -114,6 +114,13 @@
     padding-bottom: 15px;
 }
 
+.container_documento {
+    display: flex;
+    justify-content: center;
+}
+.container_documento h2 {
+    justify-content: space-around;
+}
 .footer__hyperlink{
     display: flex;
     justify-content: center;
@@ -181,8 +188,7 @@
 } */
 
 .input_login{
-    display: flex;
-    flex-direction: column; 
+    flex-direction: center; 
 }
 
 .footer__social{
@@ -221,6 +227,12 @@
     .topnav a.icon {
         padding: 5px 20px;
     }
+    .header__usuarioregister{
+    text-align: center;
+    }
+    .h1 {
+        text-align: center;
+    }
 }
 
 @media (min-width:1024px){
@@ -242,7 +254,7 @@
     .header__usuarioregister{
         text-align: center;
     }
-    .input_login{
+    .input__email{
         justify-content: center;
     }
     .button_register{
