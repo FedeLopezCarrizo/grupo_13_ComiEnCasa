@@ -1,0 +1,42 @@
+[
+    {
+     "id": 1,
+     "name": "Milanesa con panceta y huevos",
+     "price": 1600,
+     "discount": 50,
+     "category": "carne",
+     "lunch": true,
+     "description": "Milanesa con muzzarella, cebolla caramelizada, panceta ahumada y montada con 2 huevos fritos.",
+     "image": "milanesa2.jpg"
+    },
+    {
+    "id": 2,
+    "name": "Milanesa con panceta y huevos",
+    "price": 1600,
+    "discount": 50,
+    "category": "carne",
+    "lunch": false,
+    "description": "Milanesa con muzzarella, cebolla caramelizada, panceta ahumada y montada con 2 huevos fritos.",
+    "image": "milanesa2.jpg"
+    },
+    {
+    "id": 3,
+    "name": "Milanesa con panceta y huevos",
+    "price": 1600,
+    "discount": 50,
+    "category": "carne",
+    "lunch": false,
+    "description": "Milanesa con muzzarella, cebolla caramelizada, panceta ahumada y montada con 2 huevos fritos.",
+    "image": "milanesa2.jpg"
+    },
+    {
+    "id": 4,
+    "name": "Milanesa con panceta y huevos",
+    "price": 1600,
+    "discount": 50,
+    "category": "carne",
+    "lunch": true,
+    "description": "Milanesa con muzzarella, cebolla caramelizada, panceta ahumada y montada con 2 huevos fritos.",
+    "image": "milanesa2.jpg"
+    }
+   ]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head', { css:'productEdit_style' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+        <!-- producto -->
+        <section class="section__productEdit">
+
+            <article class="article__productEdit">
+                <h2>Estás editando: <%= productToEdit.name %> </h2>
+            </article>
+            <article class="article__productEdit"> 
+                <form action="/products/edit?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div class="div__productEdit">
+						<label for="name" class="form__label">Nombre del producto:</label>
+						<input type="text" id="name" name="name" placeholder="Ej: Milanesas con papas fritas" class="form__input" value="<%= productToEdit.name %>">
+					</div>
+					<div class="div__productEdit">
+						<label for="price" class="form__label">Precio del producto:</label>
+						<input type="text" id="price" name="price" placeholder="Ej: 1060" class="form__input" value="<%= productToEdit.price %>">
+					</div>
+					<div class="div__productEdit">
+						<label for="discount" class="form__label">Descuento:</label>
+						<input type="text" id="discount" name="discount" placeholder="Ej: 10" class="form__input" value="<%= productToEdit.discount %>">
+					</div>
+					<div class="div__productEdit">
+						<label for="category" class="form__label">Categoría:</label>
+						<select name="category" id="category" class="form__input">
+							<option value="">Elegí</option>
+							<option value="minutas">Minutas</option>
+                            <option value="vegana" >Vegana</option>
+                            <option value="vegetariana" >Vegetariana</option>
+                            <option value="bebidas" >Bebidas</option>
+                            <option value="etnica" >Etnica</option>
+                            <option value="pastas" >Pastas</option>
+                            <option value="plato" >Al plato</option>
+                            <option value="otro" >Otros</option>
+						</select>
+                    </div>
+                    <div class="div__checkLunch">
+                        <% if (productToEdit.lunch) { %>
+                            <input type="checkbox" name="lunch" value="Vianda" checked>                                                 
+                        <% } else  { %>
+                            <input type="checkbox" name="lunch" value="Vianda">                         
+                        <% } %>
+                         
+                        <label for="lunch"> Vianda para empresas</label>
+                    </div>
+					<div class="div__productEdit">
+						<label for="description" class="form__label">Descripción:</label>
+						<textarea name="description" id="description" class="form__input"><%= productToEdit.description %></textarea>
+                    </div>
+                    <div class="div__productEdit">
+						<label for="images" class="form__label">Imagenes:</label>
+						<input type="file" name="images" class="form__input" multiple>
+					</div>
+					<div class="div__buttonEdit">
+						<button type="submit" class="buy__now__button">Guardar producto</button>
+					</div>
+                </form>
+            </article>
+        </section>
+
+        <!-- footer -->
+        <%- include('../partials/footer') %> 
+        <!-- /footer -->
+    </div>
+</body>
+</html>

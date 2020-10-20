@@ -71,11 +71,16 @@
 .section__login{
     display: flex;
     flex-direction: column; 
+    border: 1px solid gainsboro;
+    margin: 10px;
+    padding: 15px;
+
 }
 
 .login__title{
     text-align: center;
     font-size: 24px;
+    margin-top: 0px;
 }
 
 .login__forgetpass{
@@ -201,6 +206,50 @@
     .topnav a.icon {
         padding: 5px 20px;
     }
+
+    .section__login{
+        border: 0px;
+        margin-right: 80px;
+        margin-left: 80px;
+        padding-right: 40px;
+        padding-left: 40px;
+    
+    }
+
+    .button__div{
+        display: flex;
+        justify-content: center;
+    }
+
+    .button__login{
+        width: 80%;  
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .button__register{
+        width: 80%;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .input__email{
+        font-size: 16px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        margin-top: 10px;
+    }
+    
+    .input__password{
+        font-size: 16px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        margin-top: 10px;
+    }
+
+    .login__title{
+        font-size: 26px;
+    }
 }
 
 @media (min-width:1024px){
@@ -221,5 +270,21 @@
       
     .topnav a.icon {
         padding: 10px 20px;
+    }
+
+    .section__login{
+        margin-right: 150px;
+        margin-left: 150px;
+        padding-right: 80px;
+        padding-left: 80px;
+    
+    }
+
+    .button__login{
+        width: 65%;  
+    }
+
+    .button__register{
+        width: 65%;
     }
 }
