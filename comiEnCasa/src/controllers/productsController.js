@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-let fs = require('fs');
-=======
 const fs = require('fs');
 const path = require('path');
 
 const productsfilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsfilePath, { encoding:'utf-8' } ));
->>>>>>> fef1d5daf97616e028f5afe3f1b24d187202a188
 
 const controller = {
 	store: (req, res) => {
@@ -15,22 +11,30 @@ const controller = {
 	
 	detail: (req, res) => {
 		res.render('products/productDetail');
-<<<<<<< HEAD
 	},
-	NewProduct: (req, res) => {
-		let nuevoProducto = {
-			tituloProducto: req.body.tituloProducto,
-			Descripcion: req.body.Descripcion,
-			tipo: req.body.tipo,
-			precio: req.body.precio,
+	create: (req, res) => {
+		res.render('products/productCreate');
+	}, 
+	createProduct: (req, res, next) => {
+		let newProduct = {
+			id: products[products.length-1].id + 1,
+			...req.body, 
+			images: req.files[0].filename
+			/* name: req.body.name,
+			price: req.body.price,
+			discount: req.body.discount,
+			category: req.body.category,
+			lunch: req.body.lunch, 
+			description: req.body.description, 
+			image: req.file.filename */
 		}
 
-		let nuevoProductoJSON = JSON.stringify(nuevoProducto);
+		console.log(req.file);
 
-		fs.writeFileSync('nuevoProducto.JSON',nuevoProductoJSON);
+		let newProductJSON = JSON.stringify([...products, newProduct], null, 2);
 
-		res.render('products/NewProduct');
-=======
+		fs.writeFileSync(productsfilePath, newProductJSON);
+		res.redirect('/products/detail');
 	}, 
 	edit: (req, res) => {
 		let idProduct = req.params.idProduct;
@@ -44,8 +48,10 @@ const controller = {
 		res.render('products/productEdit', { productToEdit: productToEdit });
 	}, 
 	update: (req, res, next) => {
-		res.render(req.body);
->>>>>>> fef1d5daf97616e028f5afe3f1b24d187202a188
+		console.log(req.params);
+		let productFind = products.find(product => product.id == req.params.idProduct);
+		console.log('llego?');
+		res.render(productFind);
 	}
 
 };

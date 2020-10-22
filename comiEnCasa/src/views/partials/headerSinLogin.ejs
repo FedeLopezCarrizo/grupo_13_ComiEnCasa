@@ -2,20 +2,25 @@
     <a href="/"><img src="/images/banner.png" alt="logotipo" class="logo"></a>
 
     <!-- Top Navigation Menu -->
-    <div class="topnav">             
-        <div id="myLinks">
-            <a class="topnav__links" href="#">Categorias</a>
-            <a class="topnav__links" href="#">Mis Pedidos</a>
-            <a class="topnav__links" href="#">Ofertas</a>
-            <a class="topnav__links" href="#">Empresas</a>
-            <a class="topnav__links" href="#">Preguntas Frecuentes</a>
-        </div>
+    <div class="topnav">
+      <article class="header__loginregister">     
+          <a href="javascript:void(0);" onclick="myFunction()">
+              <button class="btn-toggle-navbar">
+                  <i class="fas fa-bars"></i>
+              </button>
+          </a>     
 
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <!-- <i class="fa fa-bars"></i> -->
-            <img class="menu__burger" src="/images/icon-burger.svg" alt="menu">
-        </a>
-    </div>
+          <nav id="myLinks" class="main-navbar">
+              <ul class="left-navbar">
+                  <li><a href="#" class="topnav__links">Categorias</a></li>
+                  <li><a href="#" class="topnav__links">Mis Pedidos</a></li>
+                  <li><a href="#" class="topnav__links">Ofertas</a></li>
+                  <li><a href="#" class="topnav__links">Empresas</a></li>
+                  <li><a href="#" class="topnav__links">Preguntas Frecuentes</a></li>
+              </ul>       
+          </nav>
+      </article>     
+  </div>
 </header>
 
 <script>

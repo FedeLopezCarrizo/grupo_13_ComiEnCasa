@@ -114,6 +114,19 @@
     margin-top: 5px;
 }
 
+.button__reset{
+    border: 1px solid gainsboro;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0;
+    width: 100%;
+    background-color: lightgray;
+    margin-top: 5px;
+}
+
 .footer__main{
     background-color: #2AB969; 
 }
@@ -327,6 +340,10 @@
         color: var(--light-blue);
     }
 
+    .topnav #myLinks {
+        display: block;
+    }
+
     .left-navbar li {
         margin-right: 15px;
     }
@@ -362,8 +379,19 @@
         justify-content: center;
     }
 
+    .div__buttonReset{
+        display: flex;
+        justify-content: center;
+    }
+
     .buy__now__button{
         width: 80%;  
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .button__reset{
+        width: 80%;
         font-size: 18px;
         margin-top: 10px;
     }
@@ -373,6 +401,11 @@
         padding-top: 12px;
         padding-bottom: 12px;
         margin-top: 10px;
+    }
+
+    .logo{
+        max-height: 300px;
+        object-fit: cover;
     }
 }
 
@@ -407,5 +440,9 @@
 
     .buy__now__button{
         width: 65%;  
+    }
+
+    .button__reset{
+        width: 65%;
     }
 }

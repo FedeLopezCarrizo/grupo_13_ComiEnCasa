@@ -417,7 +417,7 @@
         display: none;
     }
 
-    .main-navbar,
+    .main-navbar
     .left-navbar,
     .right-navbar {
         display: flex;
@@ -432,6 +432,10 @@
 
     .topnav__links:hover {
         color: var(--light-blue);
+    }
+
+    .topnav #myLinks {
+        display: block;
     }
 
     .left-navbar li {
@@ -466,6 +470,11 @@
 
     .a__login{
         margin-left: 200px;
+    }
+
+    .logo{
+        max-height: 300px;
+        object-fit: cover;
     }
 }
 

@@ -22,9 +22,11 @@ router.get('/store', productsController.store);
 /* Get one product */
 router.get('/detail', productsController.detail);
 
-router.get('/NewProduct', productsController.NewProduct)
-router.get('/edit/:idProduct', productsController.edit);
+router.get('/create', productsController.create)
+router.post('/create', upload.any(), productsController.createProduct);
 
+router.get('/edit/:idProduct', productsController.edit);
 router.put('/edit', upload.any(), productsController.update);
+
 
 module.exports = router;
