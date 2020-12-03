@@ -5,53 +5,76 @@ const productsfilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsfilePath, { encoding:'utf-8' } ));
 
 const controller = {
+	all: (req, res) => {
+		res.render('products/products', { products });
+	},
+
 	store: (req, res) => {
 		res.render('products/productCart');
 	},
 	
 	detail: (req, res) => {
-		res.render('products/productDetail');
+		let idProduct = req.params.idProduct;
+
+		let productToView = products.find(product => product.id == idProduct);
+		res.render('products/productDetail', { productToView: productToView });
 	},
 	create: (req, res) => {
 		res.render('products/productCreate');
 	}, 
-	createProduct: (req, res, next) => {
-		let newProduct = {
-			id: products[products.length-1].id + 1,
-			...req.body, 
-			images: req.files[0].filename
-			/* name: req.body.name,
-			price: req.body.price,
-			discount: req.body.discount,
-			category: req.body.category,
-			lunch: req.body.lunch, 
-			description: req.body.description, 
-			image: req.file.filename */
-		}
-
-		console.log(req.file);
-
-		let newProductJSON = JSON.stringify([...products, newProduct], null, 2);
-
-		fs.writeFileSync(productsfilePath, newProductJSON);
-		res.redirect('/products/detail');
+	createProduct: (req, res, next) => {		
+		try {
+			let newProduct = {
+				id: products[products.length-1].id + 1,
+				...req.body, 
+				images: req.files[0].filename
+			}
+			
+			let newProductJSON = JSON.stringify([...products, newProduct], null, 2);
+	
+			fs.writeFileSync(productsfilePath, newProductJSON);
+			res.redirect('/products');
+            
+        } catch (error) {
+            console.log(error);
+        }
 	}, 
 	edit: (req, res) => {
 		let idProduct = req.params.idProduct;
-
-		/* if (fileProduct != ""){
-			product = JSON.parse(fileProduct);
-		} */
-
-		let productToEdit = products[idProduct];
+		let productToEdit = products.find(product => product.id == idProduct);
 
 		res.render('products/productEdit', { productToEdit: productToEdit });
 	}, 
 	update: (req, res, next) => {
-		console.log(req.params);
-		let productFind = products.find(product => product.id == req.params.idProduct);
-		console.log('llego?');
-		res.render(productFind);
+			
+		for (product of products) {
+			if (product.id == req.params.idProduct){
+				product.name = req.body.name; 
+				product.price = req.body.price;
+				product.discount = req.body.discount;
+				product.category = req.body.category;
+				product.description = req.body.description;
+				product.images = req.files[0].filename;				
+			}
+		}
+
+		let newProductJSON = JSON.stringify(products, null, 2);
+	
+		fs.writeFileSync(productsfilePath, newProductJSON);
+		res.redirect('/products');
+	}, 
+	delete: (req, res, next) => {	
+		let idProduct = req.params.idProduct;
+		let productToDelete = products.find(product => product.id == idProduct);
+
+		res.render('products/productDelete', { productToDelete: productToDelete });
+	},
+	deleteProduct: (req, res, next) => {	
+		let removeProduct = products.filter(product => product.id != req.params.idProduct);
+		let newProductJSON = JSON.stringify(removeProduct, null, 2);
+	
+		fs.writeFileSync(productsfilePath, newProductJSON);
+		res.redirect('/products');
 	}
 
 };

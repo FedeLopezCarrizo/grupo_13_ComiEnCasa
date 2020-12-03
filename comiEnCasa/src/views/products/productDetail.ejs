@@ -1,78 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-    <%- include('../partials/head', { css:'productDetail_style' } ) %> 
+<html lang="es">
+<%- include('../partials/head', { css:'productDetail_style' } ) %> 
 <body>
     <div class="container">
         
         <!-- header -->
         <%- include('../partials/header') %> 
         <!-- /header --> 
-            
-        <!-- busqueda -->
-		<section class="section__search">
-            <input class="input__search" type="text" name="search" placeholder="Busca eso que queres hoy...">
-            <button class="button__search" type="submit" name="button-search">Buscar</button>
-        </section>
         
         <!-- detalle del producto -->
         <section class="product__detail"> 
-            <h1 class="product__detail_titulo">Milanesa completa</h1>
-            <h2> "Tapa Arterias"</h2>
 
-        <div class="container_img">
+            <article class="article__product__title">
+                <h2><%= productToView.name %></h2>
+            </article>         
+            <article class="article__product__img">
+                <img src="/images/<%= productToView.images %>" class="img__product" alt="Imagen del producto">
+            </article>
 
-            <ul class="slider">
-                <li id="slider1">
-                    <img src="/images/milanesa2.jpg" alt="">
-                </li>
-                <li id="slider2">
-                    <img src="/images/milanesa3.jpg" alt="">
-                </li>
-                <li id="slider3">
-                    <img src="/images/milanesa4.jpg" alt="">
-                </li>
-            </ul>
-            <ul class="menu">
-                <li>
-                    <a href="#slider1">1</a>
-                </li>
-                <li>
-                    <a href="#slider2">2</a>
-                </li>
-                <li>
-                    <a href="#slider3">3</a>
-                </li>
-
-            </ul>
-
-        </div> 
-        <div class="container_descripcion">
-            <h2>Descripción</h2>
-            <p>
-                <ul>
-                    <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit, fugiat.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus porro 
-                        ducimus ipsa!</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Ea dolorum excepturi velit.</li>
-                </ul>   
-            </p>
-
-        </div>
-
-               
+            <article class="article__description">
+                <h3>Descripción</h3>
+                <p>
+                    <%= productToView.description %>
+                </p>
+            </article>
 
             <section class="product__detail_cantidad">         
                 <h3>Stock disponible</h3>
-                <!-- <div class="cantidad_pedido">
-                    <button type="button_menos" class="cantidad_menos">-</button> 
-                    <span>1</span>
-                    <button type="button_mas" class="cantidad_mas">+</button>
-                </div> -->
-               
+            
                 <!-- Trigger/Open The Modal -->
-                <button id="myBtn" class="btn__quantity">Cantidad: 1</button>
+                <div class= "button__div">
+                    <button id="myBtn" class="btn__quantity">Cantidad: 1</button>
+                </div>
+                
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -91,23 +51,29 @@
                             </ul>
                         </div>
                     </div>  
-                </div>
-
-                <div class="aclaracion"> 
-                    <h3> Queres aclarar algo? </h3>
-                    <article class="textarea"> 
-                        <textarea name="aclaracion" id="aclarar" cols="30" rows="5"></textarea>
-                    </article>
-                </div>                         
+                </div>                   
             </section>
 
-            <section class="product__detail_button">
-                <button class="product__detail_button" type="submit" name="button-product">Agregar al carrito</button>
-            </section>
+            <div class="button__div">
+                <button class="button__add" type="submit" name="button-product">Agregar al carrito</button>
+            </div>
 
-            <section class="product__detail_masdelvendedor">
-                <a href="#">Más productos del vendedor</a>
-            </section>
+            <div class="button__div">
+                <ul class="ul__button">
+                    <li class="li__button"><a href="/products/edit/<%=  productToView.id %>" class="enlace__button">Modificar producto</a></li> 
+                </ul>                
+            </div>
+
+            <div class="button__div">
+                <ul class="ul__button__delete">
+                    <li class="li__button"><a href="/products/delete/<%=  productToView.id %>" class="enlace__button__delete">Eliminar producto</a></li> 
+                </ul>                
+            </div>
+
+            <div class="div__seller">
+                <a href="#" class="txt__seller">Más productos del vendedor</a>
+                <span class="line__seller"></span>
+            </div>
         </section>    
 
         <!-- sugerencias -->
@@ -116,7 +82,7 @@
                 <h2>Las mejores sugerencias</h2>
             </article>         
             <article class="article__suggestion">
-                 <a href="#"><img class="img__suggestions" src="/images/sugerencia_bebida.png" alt="sugerencia_bebida"> </a>
+                <a href="#"><img class="img__suggestions" src="/images/sugerencia_bebida.png" alt="sugerencia_bebida"> </a>
             </article>
             <article class="article__suggestion">
                 <a href="#"><img class="img__suggestions" src="/images/sugerencia_minuta.png" alt="sugerencia_minuta"> </a>
@@ -134,53 +100,53 @@
         <!-- /footer -->
     </div>
 
-    <script>
-        var slideIndex = 1;
-        showDivs(slideIndex);
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
 
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = x.length}
+
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
         }
+        x[slideIndex-1].style.display = "block";  
+    }
+</script>
 
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length}
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
 
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";  
-            }
-            x[slideIndex-1].style.display = "block";  
-        }
-    </script>
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
 
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-        modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
         modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-        }
-    </script>
+    }
+    }
+</script>
 </body>
 </html>

@@ -10,6 +10,21 @@
     font-family: 'league_spartanbold';
 }
 
+.container section{
+    max-width: 1200px;
+}
+
+.button__div{
+    display: flex;
+    justify-content: center;
+}
+
+.div__productCreate{
+    display: flex;
+    flex-direction: column; 
+    margin-top: 5px;
+}
+
 .topnav {
     overflow: hidden;
     background-color: #2AB969;
@@ -98,6 +113,7 @@
     padding: 8px 16px;
     font-size: 14px;
     margin-top: 5px;
+    max-width: 632px;
 }
 
 .input__password{
@@ -106,6 +122,7 @@
     padding: 8px 16px;
     font-size: 14px;
     margin-top: 5px;
+    max-width: 632px;
 }
 
 .button__login{
@@ -117,8 +134,9 @@
     border-radius: 10px;
     padding: 0;
     width: 100%;
-    background-color: gray;
+    background-color: #2AB969;
     margin-top: 5px;
+    max-width: 395px;
 }
 
 .login__unregistered{
@@ -150,6 +168,7 @@
     width: 100%;
     background-color: lightgray;
     margin-top: 5px;
+    max-width: 395px;
 }
 
 .footer__main li{
@@ -242,7 +261,10 @@
     .btn-toggle-navbar {
         display: none;
     }
-
+    .div__productCreate{
+        display: flex;
+        justify-content: center;
+    }
     .main-navbar
     .left-navbar,
     .right-navbar {
@@ -289,34 +311,27 @@
     
     }
 
-    .button__div{
-        display: flex;
-        justify-content: center;
-    }
-
     .button__login{
-        width: 80%;  
         font-size: 18px;
         margin-top: 10px;
     }
 
     .button__register{
-        width: 80%;
         font-size: 18px;
         margin-top: 10px;
     }
 
     .input__email{
         font-size: 16px;
-        padding-top: 12px;
-        padding-bottom: 12px;
+        /* padding-top: 12px;
+        padding-bottom: 12px; */
         margin-top: 10px;
     }
     
     .input__password{
         font-size: 16px;
-        padding-top: 12px;
-        padding-bottom: 12px;
+      /*   padding-top: 12px;
+        padding-bottom: 12px; */
         margin-top: 10px;
     }
 
@@ -351,18 +366,7 @@
     }
 
     .section__login{
-        margin-right: 150px;
-        margin-left: 150px;
-        padding-right: 80px;
-        padding-left: 80px;
+        margin: auto;
     
-    }
-
-    .button__login{
-        width: 65%;  
-    }
-
-    .button__register{
-        width: 65%;
     }
 }
