@@ -38,6 +38,13 @@ body {
     display: block;
 }
 
+.button__logout {
+    background-color: #2AB969;
+    border: none;
+    font-family: 'league_spartanbold';
+    cursor: pointer;
+}
+
 .topnav a.icon {
     color: white;
     padding: 5px 10px;
@@ -144,6 +151,7 @@ body {
 
 .image__product{
     width: 100%;
+    max-height: 240px;
 }
 
 .product__box__image{
@@ -152,7 +160,8 @@ body {
 
 .product__box__data{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .article__products__title{

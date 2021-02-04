@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-  <%- include('partials/head', { css:'index_style' } )  %> 
+  <%- include('../partials/head', { css:'index_style', js:'main' } )  %> 
   <body>
     <div class="container">
         
       <!-- header -->
-	    <%- include('partials/header') %>
+	    <%- include('../partials/header') %>
       <!-- /header -->    
       
       <!-- ultima visita -->
@@ -54,9 +54,9 @@
           </article>
           <article class="article__comments">
               <img class="img__comments" src="/images/cliente2.jpg" alt="opinion cliente 2">
-              <span class="name__comments">Diego</span>
-              <p class="p__comments">Muy buenas las hamburguesas. Muy completas!</p>
-              <span class="name__comments">Burger Prince - Zapiola 1036</span>
+              <span class="name__comments">Florencia</span>
+              <p class="p__comments">Las mejores ensaladas. Muy variadas!</p>
+              <span class="name__comments">Mundo Salad - Zapiola 1036</span>
               <span class="date__comments">8 sep, 2020</span>
           </article>
           <article class="article__comments">
@@ -69,7 +69,7 @@
       </section>
 
       <!-- footer -->
-	    <%- include('partials/footer') %>
+	    <%- include('../partials/footer') %>
 	    <!-- /footer -->
     </div>
   </body>

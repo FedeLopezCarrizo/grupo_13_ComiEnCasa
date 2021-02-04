@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head', { css:'register_style', js:'register' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+	    <%- include('../partials/headerSinLogin') %>
+        <!-- /header --> 
+
+        <!-- user -->
+        <section class="section__register">
+
+            <article class="article__userCreate">                 
+                <h2>Estás editando al usuario: <%= userToEdit.userName %> </h2>
+                <form action="/users/edit/<%= userToEdit.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div style="width: 500px; color: red;">
+                        <% if (typeof errors != "undefined") { %>
+                            <% errors.forEach(error => { %>
+                                <p><%= error.msg %></p>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Nombre" name="firstName" id="firstName" value="<%= userToEdit.firstName %>"/>
+                        <small id="message_name"></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Apellido" name="lastName" id="lastName" value="<%= userToEdit.lastName %>"/>
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Usuario" name="userName" id="userName" value="<%= userToEdit.userName %>"/>
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="email" id="email" name="email" placeholder="Tu dirección de E-mail" value="<%= userToEdit.email %>"/>
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="password" name="password" placeholder="Contraseña">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+						<label for="image" class="form__label">Imagenes:</label>
+						<input type="file" name="image" class="input__nombre" accept="image/*">
+					</div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Número de teléfono" name="phoneNumber" id="phoneNumber" value="<%= userToEdit.phoneNumber %>"/>
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <label for="typedocument" class="form__label">Tipo de documento:</label>
+                        <select name="typedocument" class="input__nombre">
+                            <% typeDocuments.forEach(typeDocument => { %> 
+                                <% if (userToEdit.TypeDocumentId == typeDocument.id) { %> 
+                                    <option value="<%= typeDocument.id %>" selected><%= typeDocument.name %> </option>
+                                <% } else { %> 
+                                    <option value="<%= typeDocument.id %>"><%= typeDocument.name %> </option>
+                                <% } %> 
+                            <% }) %>
+                        </select>
+                        <input class="input__nombre" type="text" name="numberDoc" id="numberDoc" placeholder="12345678" value="<%= userToEdit.numberDoc %>"/>
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Dirección" name="address" id="address"  value="<%= userToEdit.address %>"/>
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <label for="role" class="form__label">Tipo de documento:</label>
+                        <select name="role" class="input__nombre">
+                            <% roles.forEach(role => { %> 
+                                <% if (userToEdit.roles.some(userRole => userRole.id == role.id)) { %> 
+                                    <option value="<%= role.id %>" selected><%= role.name %> </option>
+                                <% } else { %> 
+                                    <option value="<%= role.id %>"><%= role.name %> </option>
+                                <% } %> 
+                            <% }) %>
+                        </select>
+                        <small></small>
+                    </div>
+ 
+                    <div class="div__button">
+						<button type="submit" class="button__submit">Enviar Formulario</button>
+					</div>
+					<div class="div__button">
+                        <button type="reset" class="button__reset">Limpiar campos</button>
+                    </div>                    
+                </form>
+                
+            </article>    
+        </section>
+
+        <!-- footer -->
+        <%- include('../partials/footer') %> 
+        <!-- /footer -->
+    </div>
+</body>
+</html>

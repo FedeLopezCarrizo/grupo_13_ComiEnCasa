@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head', { css:'productDetail_style' } ) %> 
+<%- include('../partials/head', { css:'productDetail_style', js:'main' } ) %> 
 <body>
     <div class="container">
         
@@ -13,69 +13,83 @@
 
             <article class="article__product__title">
                 <h2><%= productToView.name %></h2>
-            </article>         
-            <article class="article__product__img">
-                <img src="/images/<%= productToView.images %>" class="img__product" alt="Imagen del producto">
             </article>
 
-            <article class="article__description">
-                <h3>Descripción</h3>
-                <p>
-                    <%= productToView.description %>
-                </p>
-            </article>
+            <section class="section__product__description">         
+                <article class="article__product__img">
+                    <img src="/images/<%= productToView.image %>" class="img__product" alt="Imagen del producto">
+                </article>
+
+                <article class="article__description">
+                    <h3>Descripción</h3>
+                    <p>
+                        <%= productToView.description %>
+                    </p>
+            
+
+                    <% if (locals.usuario) { %>
+                        <h3>Stock disponible</h3>
+                
+                        <!-- Trigger/Open The Modal -->
+                        <div class= "button__div">
+                            <button id="myBtn" class="btn__quantity">Cantidad: 1</button>
+                        </div>
+                        
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="close">&times;</span>
+                                    <h2>Elegí cantidad</h2>
+                                </div>
+                                <div class="modal-body">
+                                    <ul>                         
+                                        <% for( let i = 1; i <= productToView.stock; i++ ) { %>
+                                            <% if (i == 1) { %>
+                                                <li><button class="modal__body_button"><%= i %> unidad</button></li>
+                                            <% } else { %>                                
+                                                <li><button class="modal__body_button"><%= i %> unidades</button></li>
+                                            <% } %>    
+                                        <% } %>
+                                    </ul>
+                                </div>
+                            </div>  
+                        </div>   
+
+                        <form action="/products/store" method="POST">
+                            <input type="hidden" name="productId" value="<%=  productToView.id %>">
+                            <div class="button__div">
+                                <button class="button__add" type="submit" name="button-product">Agregar al carrito</button>
+                            </div>
+                        </form>
+                        <% if (locals.role[0].id == 1) { %>
+                            <div class="button__div">
+                                <ul class="ul__button">
+                                    <li class="li__button"><a href="/products/edit/<%=  productToView.id %>" class="enlace__button">Modificar producto</a></li> 
+                                </ul>                
+                            </div>
+
+                            <div class="button__div">
+                                <ul class="ul__button__delete">
+                                    <li class="li__button"><a href="/products/delete/<%=  productToView.id %>" class="enlace__button__delete">Eliminar producto</a></li> 
+                                </ul>                
+                            </div>
+                        <% } %>
+                    <% } %>
+                </article>
+            </section>  
 
             <section class="product__detail_cantidad">         
-                <h3>Stock disponible</h3>
-            
-                <!-- Trigger/Open The Modal -->
-                <div class= "button__div">
-                    <button id="myBtn" class="btn__quantity">Cantidad: 1</button>
+                    
+                <div class="div__seller">
+                    <a href="#" class="txt__seller">Más productos del vendedor</a>
+                    <span class="line__seller"></span>
                 </div>
-                
+            </section>    
 
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
-                            <h2>Elegí cantidad</h2>
-                        </div>
-                        <div class="modal-body">
-                            <ul>
-                                <li><button class="modal__body_button">1 unidad</button></li>
-                                <li><button class="modal__body_button">2 unidades</button></li>
-                                <li><button class="modal__body_button">3 unidades</button></li>
-                                <li><button class="modal__body_button">4 unidades</button></li>
-                            </ul>
-                        </div>
-                    </div>  
-                </div>                   
-            </section>
-
-            <div class="button__div">
-                <button class="button__add" type="submit" name="button-product">Agregar al carrito</button>
-            </div>
-
-            <div class="button__div">
-                <ul class="ul__button">
-                    <li class="li__button"><a href="/products/edit/<%=  productToView.id %>" class="enlace__button">Modificar producto</a></li> 
-                </ul>                
-            </div>
-
-            <div class="button__div">
-                <ul class="ul__button__delete">
-                    <li class="li__button"><a href="/products/delete/<%=  productToView.id %>" class="enlace__button__delete">Eliminar producto</a></li> 
-                </ul>                
-            </div>
-
-            <div class="div__seller">
-                <a href="#" class="txt__seller">Más productos del vendedor</a>
-                <span class="line__seller"></span>
-            </div>
-        </section>    
-
+        </section>  
         <!-- sugerencias -->
         <section class="section__suggestions">
             <article class="article__suggestions__title">

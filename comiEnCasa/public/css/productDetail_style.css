@@ -26,6 +26,13 @@ body {
     max-width: 1200px;
 }
 
+.button__logout {
+    background-color: #2AB969;
+    border: none;
+    font-family: 'league_spartanbold';
+    cursor: pointer;
+}
+
 .article__product__title{
     color: #273239;
     margin: 0 0 10px;
@@ -36,29 +43,25 @@ body {
 
 .article__product__img{
     width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
 }
 
 .img__product{
     width: 100%;
 }
 
+.section__product__description{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    gap:40px;
+    justify-content: center;
+}
+
 .article__description{
-    color: #273239;
-    margin: 0 0 10px;
-    text-align: center;
     width: 100%;
-    padding: 10px;
 }
 
 .product__detail_cantidad{
     justify-content: space-between;
-}
-
-.product__detail_cantidad h3{
-    text-align: center;
 }
 
 .button__div{
@@ -635,12 +638,12 @@ body {
 
     .article__product__img{
         border: 1px solid gainsboro;
-        margin-bottom: 20px;
+        padding: 5px;
     }
 
     .article__description{
         border: 1px solid gainsboro;
-        margin-bottom: 20px;
+        padding: 5px;
     }
 
     .product__detail_cantidad{
@@ -745,8 +748,5 @@ body {
     }
     .product__detail_cantidad{
         justify-content: center;
-    }
-    .product__detail_cantidad h3{
-        text-align: center;
     }
 }

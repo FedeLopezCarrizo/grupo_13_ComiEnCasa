@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head', { css:'productCart_style' } ) %> 
+<%- include('../partials/head', { css:'productCart_style', js:'main' } ) %> 
 <body>
     <div class="container">
         
@@ -16,37 +16,44 @@
         
         <!-- producto -->
         <section class="section__product">
+            <% if(cartProducto.length != 0){ %>           
+            
+                <% cartProducto.forEach(item => { %>
+                    <article class="article__product"> 
+                        <img class="img__product" src="/images/<%= item.product.image %>" alt="<%= item.product.name %>">
+                        
+                        <article class="article__product__description">
+                            <a href="/products/<%= item.product.id %>" class="a__detailProduct"><%= item.product.name %></a>
+                            <span class="price__currency">$<%= item.salePrice %></span>
 
-            <article class="article__product"> 
-                <img class="img__product" src="/images/milanesa2.jpg" alt="">
-                
-                <article class="article__product__description">
-                    <a href="/products/detail" class="a__detailProduct">Milanesa con panceta y huevos.</a>
-                    <span class="price__currency">$ 1600</span>
+                            <select class="select__cantidad">
+                                <option><%= item.quantity %></option>
+                            </select>
+                            <form action="/products/deleteItemCart" method="POST">
+                                <input type="hidden" name="itemId" value="<%=  item.productId %>">
+                                <button class="button__delete" type="submit" name="button-delete">Eliminar</button>
+                            </form>            
+                        </article>
+                    </article>
+                <% }) %>
+            </section>
 
-                    <select class="select__cantidad">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
-                      <button class="button__delete" type="submit" name="button-delete">Eliminar</button>
+            <!-- total carrito -->
+            <section class="section__summary">
+                <article class="article__summary"> 
+                    <span class="price__">Total</span>
+                    <span class="price__">$<%= total %></span>
                 </article>
-            </article>
-        </section>
+            </section>
 
-        <!-- total carrito -->
-        <section class="section__summary">
-            <article class="article__summary"> 
-                <span class="price__">Total</span>
-                <span class="price__">$ 1600</span>
-            </article>
-        </section>
-
-        <section class="section__button__buy">
-            <button class="button__buy" type="submit" name="button-buy">Finalizar compra</button>
-        </section>
-
+            <section class="section__button__buy">
+                <button class="button__buy" type="submit" name="button-buy">Finalizar compra</button>
+            </section>
+        <% } else { %>
+            <div>
+                <h2 style="text-align: center; padding: 100px 0; color: tomato;">No exiten productos en tu carrito</h2>
+            </div>
+        <% } %>
          <!-- sugerencias -->
          <section class="section__suggestions">
             <article class="article__suggestions__title">

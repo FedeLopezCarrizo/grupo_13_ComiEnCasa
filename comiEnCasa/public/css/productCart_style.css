@@ -63,6 +63,13 @@
     /* border: 1px solid gainsboro; */
 }
 
+.button__logout {
+    background-color: #2AB969;
+    border: none;
+    font-family: 'league_spartanbold';
+    cursor: pointer;
+}
+
 .menu__iconburger{
     display: flex;
     justify-content: space-between;
@@ -551,7 +558,7 @@
     }
     
     .button__delete{
-        width: 15%;
+        width: 100%;
     }
     
     .article__product__description{

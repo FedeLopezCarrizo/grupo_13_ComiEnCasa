@@ -12,12 +12,23 @@
 
           <nav id="myLinks" class="main-navbar">
               <ul class="left-navbar">
+                <li><a href="/" class="topnav__links">Inicio</a></li>
                   <li><a href="/products" class="topnav__links">Todos los productos</a></li>
-                  <li><a href="#" class="topnav__links">Mis Pedidos</a></li>
                   <li><a href="#" class="topnav__links">Ofertas</a></li>
-                  <li><a href="#" class="topnav__links">Empresas</a></li>
                   <li><a href="#" class="topnav__links">Preguntas Frecuentes</a></li>
-              </ul>       
+                  <li><a href="#" class="topnav__links">Contacto</a></li>
+              </ul>   
+              <ul class="right-navbar">
+                <% if (locals.usuario) { %>
+                    <li><a href="/users/edit/<%=  locals.idUsuario %>" class="topnav__links">Editá tu Usuario <i class="far fa-address-card"></i></a></li>   
+                    <form action="/users/logout" method="POST">
+                        <button type="submit" class="topnav__links button__logout">Cerrar Sesión</button>
+                    </form> 
+                    <li style="text-decoration: none;">
+                      <a href="/users/<%=  locals.idUsuario %>"><img src="/images/<%= locals.avatar %>" style="width: 60px; border-radius: 100%; height: 60px; display:inline-block;" alt=""></a>
+                    </li> 
+                <% } %>
+            </ul>     
           </nav>
       </article>     
   </div>

@@ -6,6 +6,12 @@
     font-style: normal;
 } 
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container{
     font-family: 'league_spartanbold';
 }
@@ -17,12 +23,6 @@
 .button__div{
     display: flex;
     justify-content: center;
-}
-
-.div__productCreate{
-    display: flex;
-    flex-direction: column; 
-    margin-top: 5px;
 }
 
 .topnav {
@@ -67,7 +67,6 @@
 }
 
 .header__loginregister{
-    /* height: 48px; */
     display: flex;
     justify-content: space-between;
 }
@@ -86,12 +85,47 @@
 }
 
 .section__login{
-    display: flex;
-    flex-direction: column; 
     border: 1px solid gainsboro;
     margin: 10px;
     padding: 15px;
+    display: flex;
+    justify-content: center;
 
+}
+
+.article__login{
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+}
+
+.div__login{
+    display: flex;
+    flex-direction: column; 
+    margin-top: 5px;
+}
+
+.div__login.error input{
+    border-color: red;
+}
+
+.div__login.succes input{
+    border-color: green;
+}
+
+.div__login.error small{
+    color: red;
+}
+
+.div__login.succes small{
+    color: black;
+}
+
+.button__logout {
+    background-color: #2AB969;
+    border: none;
+    font-family: 'league_spartanbold';
+    cursor: pointer;
 }
 
 .login__title{
@@ -113,7 +147,6 @@
     padding: 8px 16px;
     font-size: 14px;
     margin-top: 5px;
-    max-width: 632px;
 }
 
 .input__password{
@@ -122,7 +155,6 @@
     padding: 8px 16px;
     font-size: 14px;
     margin-top: 5px;
-    max-width: 632px;
 }
 
 .button__login{
@@ -133,7 +165,7 @@
     height: 40px;
     border-radius: 10px;
     padding: 0;
-    width: 100%;
+    width: 60%;
     background-color: #2AB969;
     margin-top: 5px;
     max-width: 395px;
@@ -157,18 +189,42 @@
     margin-top: -10px;
 }
 
-.button__register{
+.ul__button {
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+  
+.li__button {
+    display: inline;
+}
+  
+.li__button:last-child .enlace__button .enlace__button__delete {
+    margin-right: 0;
+}
+  
+.enlace__button {
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    /* width: 19.5%; */
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 2;
+    color: white;
+    
     border: 1px solid gainsboro;
     font-size: 16px;
     font-weight: 800;
-    color: black;
     height: 40px;
     border-radius: 10px;
     padding: 0;
-    width: 100%;
-    background-color: lightgray;
-    margin-top: 5px;
+    width: 60%;
     max-width: 395px;
+}
+  
+.enlace__button:link, .enlace__button:visited, .enlace__button:focus {
+    background: #1877f2;
 }
 
 .footer__main li{
@@ -261,10 +317,7 @@
     .btn-toggle-navbar {
         display: none;
     }
-    .div__productCreate{
-        display: flex;
-        justify-content: center;
-    }
+
     .main-navbar
     .left-navbar,
     .right-navbar {
@@ -298,17 +351,17 @@
         padding: 5px 20px;
     }
 
+    .div__login{
+        display: flex;
+        justify-content: center;
+    }
+
     .header__loginregister{
         justify-content: center;
     }
 
-    .section__login{
-        border: 0px;
-        margin-right: 80px;
-        margin-left: 80px;
-        padding-right: 40px;
-        padding-left: 40px;
-    
+    .article__login{
+        align-items: center;
     }
 
     .button__login{
@@ -319,6 +372,10 @@
     .button__register{
         font-size: 18px;
         margin-top: 10px;
+    }
+
+    .enlace__button{
+        font-size: 18px;
     }
 
     .input__email{
@@ -363,10 +420,5 @@
       
     .topnav a.icon {
         padding: 10px 40px;
-    }
-
-    .section__login{
-        margin: auto;
-    
     }
 }

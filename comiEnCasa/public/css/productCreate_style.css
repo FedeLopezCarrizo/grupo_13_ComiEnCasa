@@ -56,6 +56,13 @@ body {
     color: black;
 }
 
+.button__logout {
+    background-color: #2AB969;
+    border: none;
+    font-family: 'league_spartanbold';
+    cursor: pointer;
+}
+
 .header__main {
     display: flex;
     flex-direction: column;
@@ -121,7 +128,7 @@ body {
     height: 40px;
     border-radius: 10px;
     padding: 0;
-    width: 100%;
+    width: 60%;
     background-color: #2AB969;
     margin-top: 5px;
     max-width: 395px;
@@ -135,7 +142,7 @@ body {
     height: 40px;
     border-radius: 10px;
     padding: 0;
-    width: 100%;
+    width: 60%;
     background-color: #fcd33c;
     margin-top: 5px;
     max-width: 395px;
@@ -426,7 +433,6 @@ body {
         padding-top: 12px;
         padding-bottom: 12px;
         margin-top: 10px;
-        width: 650px;
     }
 
     .logo{

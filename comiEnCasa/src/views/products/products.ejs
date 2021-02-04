@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head', { css:'products_style' } ) %> 
+<%- include('../partials/head', { css:'products_style', js:'main' } ) %> 
 <body>
     <div class="container">
 
@@ -17,11 +17,11 @@
                 <article class="article__products__detail">
                     <a href="/products/<%= producto.id %> ">
                         <article class="product__box__image">
-                            <img src="/images/<%= producto.images %> " class="image__product" alt="imagen de producto">
+                            <img src="/images/<%= producto.image %> " class="image__product" alt="imagen de producto">
                         </article>
                         <article class="product__box__data">
-                            <h2>$<%= producto.price %> /h2>
-                            <span>DISCOUNT <%= producto.discount %> % OFF</span>
+                            <p>$<%= producto.price %></p>
+                            <p><%= producto.discount %> % OFF</p>
                             <p><%= producto.name %> </p>
                             <i class="fas fa-truck"></i>
                         </article>

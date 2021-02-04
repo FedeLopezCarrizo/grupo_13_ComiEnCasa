@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include('../partials/head', { css:'register_style' } ) %> 
+    <%- include('../partials/head', { css:'register_style', js:'register' } ) %> 
 <body>
     <div class="container">
         
@@ -8,109 +8,94 @@
 	    <%- include('../partials/headerSinLogin') %>
         <!-- /header --> 
 
-        <article class="header__usuarioregister"> 
-            
-            <h1> Completa tus datos.</h1>
-            <a class="create__business" href="/users/registerbusiness">crea una cuenta empresa</a>
-            <% if (typeof errors != 'undefined') { %>
-                <ul>
-                    <% for( let i = 0; i < errors.length; i++ ) { %>
-                        <li style="color:red">
-                            <%= errors[i].msg %> 
-                        </li>
-                    <% } %>
-                </ul>
-            <% } %>
-            <!-- esto se usa cuando hay q cargar imagen <form action="/users/register" method="post" enctype="multipart/form-data"> -->
-            <form action="/users/register" method="post" class="form">
+        <!-- user -->
+        <section class="section__register">
 
-                <div class="form-control">
-                    <input class="input__nombre" type="text" placeholder="Nombre" name="name" id="name" />
-                    <small id="message_name"></small>
-                </div>
+            <article class="article__userCreate">                 
+                <h2> Completa tus datos.</h2>
 
-                <div class="form-control">
-                    <input class="input__nombre" type="text" placeholder="Apellido" name="lastname" id="lastname" />
-                    <small></small>
-                </div>
+                <form action="/users/register" method="POST" enctype="multipart/form-data">
+                    <div style="width: 500px; color: red;">
+                        <% if (typeof errors != "undefined") { %>
+                            <% errors.forEach(error => { %>
+                                <p><%= error.msg %></p>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Nombre" name="firstName" id="firstName" value="<%= typeof old == 'undefined' ? '' : old.firstName %>">
+                        <small id="message_name"></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Apellido" name="lastName" id="lastName" value="<%= typeof old == 'undefined' ? '' : old.lastName %>">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Usuario" name="userName" id="userName"  value="<%= typeof old == 'undefined' ? '' : old.userName %>">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="email" id="email" name="email" placeholder="Tu dirección de E-mail" value="<%= typeof old == 'undefined' ? '' : old.email %>">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="password" name="password" placeholder="Contraseña">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+						<label for="image" class="form__label">Imagenes:</label>
+						<input type="file" name="image" class="input__nombre" accept="image/*">
+					</div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Número de teléfono" name="phoneNumber" id="phoneNumber" value="<%= typeof old == 'undefined' ? '' : old.phoneNumber %>">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <label for="typedocument" class="form__label">Tipo de documento:</label>
+                        <select name="typedocument" class="input__nombre">
+                            <% typedocuments.forEach(typedocument => { %> 
+                                <option value="<%= typedocument.id %>"><%= typedocument.name %> </option>
+                            <% }) %>
+                        </select>
+                        <input class="input__nombre" type="text" name="numberDoc" id="numberDoc" placeholder="12345678"  value="<%= typeof old == 'undefined' ? '' : old.numberDoc %>">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input class="input__nombre" type="text" placeholder="Dirección" name="address" id="address"  value="<%= typeof old == 'undefined' ? '' : old.address %>">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <label for="role" class="form__label">Tipo de usuario:</label>
+                        <% if (locals.usuario) { %>
+                            <% if (locals.role[0].id == 1) { %>
+                                <select name="role" class="input__nombre">
+                                    <% roles.forEach(role => { %> 
+                                        <option value="<%= role.id %>"><%= role.name %> </option>
+                                    <% }) %>
+                                </select>
+                            <% } else { %>
+                                <select name="role" class="input__nombre">
+                                    <option value="2">Cliente </option>
+                                </select>
+                            <% } %>
+                        <% } else { %>
+                            <select name="role" class="input__nombre">
+                                <option value="2">Cliente </option>
+                            </select>
+                        <% } %>
+                        <small></small>
+                    </div>
+ 
+                    <div class="div__button">
+						<button type="submit" class="button__submit">Enviar Formulario</button>
+					</div>
+					<div class="div__button">
+                        <button type="reset" class="button__reset">Limpiar campos</button>
+                    </div>                    
+                </form>
                 
-                <div class="form-control">
-                    <label for="provincia">Seleccione la provincia</label>           
-                    <select class="input__nombre" name="provincia" id="provincia">
-                        <option value="bsas">Buenos Aires</option>
-                        <option value="capfed">C.A.B.A.</option>
-                        <option value="cata">Catamarca</option>
-                        <option value="chac">Chaco</option>
-                        <option value="chub">Chubut</option>
-                        <option value="cord">Córdoba</option>
-                        <option value="corri">Corrientes</option>
-                        <option value="entr">Entre Ríos</option>
-                        <option value="form">Formosa</option>
-                        <option value="Jujuy">Jujuy</option>
-                        <option value="lapam">La Pampa</option>
-                        <option value="lario">La Rioja</option>
-                        <option value="mdz">Mendoza</option>
-                        <option value="misio">Misiones</option>
-                        <option value="nqn">Neuquén</option>
-                        <option value="rion">Rio Negro</option>
-                        <option value="salta">Salta</option>
-                        <option value="sanju">San Juan</option>
-                        <option value="sanlu">San Luis</option>
-                        <option value="sancru">Santa Cruz</option>
-                        <option value="sanfe">Santa Fe</option>
-                        <option value="santia">Santiago del Estero</option>
-                        <option value="tierr">Tierra del Fuego</option>
-                        <option value="tucu">Tucumán</option>
-                    </select>
-                    <small></small>
-                </div>
-
-                <div class="form-control">
-                    <label for="tipodni">Tipo y número de documento</label>           
-                    <select class="input__nombre" name="tipodni" id="tipodni">
-                        <option value="dni">DNI</option>
-                        <option value="LC">Libr. civica</option>
-                        <option value="LE">Libr. enrolamiento</option>
-                    </select>
-                    <input class="input__nombre" type="text" name="nrodni" id="nrodni" placeholder="12345678">
-                    <small></small>
-                </div>
-
-                <h2>Que preferis?</h2>
-                <p> 
-                    <input class="input__nombre" type="checkbox" name="tipo" value="minutas">Minutas 
-                    <input class="input__nombre" type="checkbox" name="tipo" value="Vegana">Vegana 
-                    <input class="input__nombre" type="checkbox" name="tipo" value="Vegetariana">Vegetariana <br>
-                    <input class="input__nombre" type="checkbox" name="tipo" value="bebidas">Bebidas 
-                    <input class="input__nombre" type="checkbox" name="tipo" value="Etnicas">Etnicas  
-                    <input class="input__nombre" type="checkbox" name="tipo" value="pasta">Pastas <br>
-                    <input class="input__nombre" type="checkbox" name="tipo" value="carne">Carnes
-                    <input class="input__nombre" type="checkbox" name="tipo" value="plato">Al Plato  
-                    <input class="input__nombre" type="checkbox" name="tipo" value="otro">Otros 
-                </p>
-    
-                <div class="form-control">
-                    <input class="input__email" type="email" id="email" name="email" placeholder="Tu dirección de E-mail">
-                    <small></small>
-                </div>
-
-                <div class="form-control">
-                    <input class="input__password" type="password" name="password" placeholder="Contraseña">
-                    <small></small>
-                </div>
-
-                <div class="form-control">
-                    <input class="input__password" type="password" name="password-repeat" placeholder="Repetir Contraseña">
-                    <small></small>
-                </div>
-
-                <section class="button_register"> 
-                    <button class="button__reset" type="submit" name="button_reset">Limpiar campos</button>
-                    <button class="button__submit" type="submit" name="button_submit">Enviar formulario</button>
-                </section>                      
-            </form>
-            
-        </article>    
+            </article>    
+        </section>
 
         <!-- footer -->
         <%- include('../partials/footer') %> 

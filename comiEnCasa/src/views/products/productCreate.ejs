@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head', { css:'productCreate_style' } ) %> 
+<%- include('../partials/head', { css:'productCreate_style', js:'main' } ) %> 
 <body>
     <div class="container">
         
@@ -14,44 +14,45 @@
             <article class="article__productCreate"> 
                 <h2>Carga tu nuevo producto</h2>
                 <form action="/products/create" method="POST" enctype="multipart/form-data">
+                    <div style="width: 500px; color: red;">
+                        <% if (typeof errors != "undefined") { %>
+                            <% errors.forEach(error => { %>
+                                <p><%= error.msg %></p>
+                            <% }) %>
+                        <% } %>
+                    </div>
                     <div class="div__productCreate">
 						<label for="name" class="form__label">Nombre del producto:</label>
-						<input type="text" id="name" name="name" placeholder="Ej: Milanesas con papas fritas" class="form__input">
+						<input type="text" id="name" name="name" placeholder="Ej: Milanesas con papas fritas" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.name %>">
 					</div>
 					<div class="div__productCreate">
 						<label for="price" class="form__label">Precio del producto:</label>
-						<input type="text" id="price" name="price" placeholder="Ej: 1060" class="form__input">
+                        <input type="text" id="price" name="price" placeholder="Ej: 1060" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.price %>">
 					</div>
 					<div class="div__productCreate">
 						<label for="discount" class="form__label">Descuento:</label>
-						<input type="text" id="discount" name="discount" placeholder="Ej: 10" class="form__input">
+						<input type="text" id="discount" name="discount" placeholder="Ej: 10" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.discount %>">
                     </div>
+					<div class="div__productCreate">
+						<label for="description" class="form__label">Descripción:</label>
+						<textarea name="description" id="description" class="form__input" cols="30" rows="5"><%= typeof old == 'undefined' ? '' : old.description %></textarea>
+                    </div>
+                    <div class="div__productCreate">
+						<label for="image" class="form__label">Imagenes:</label>
+						<input type="file" name="image" class="form__input" accept="image/*">
+                    </div>
+					<div class="div__productCreate">
+						<label for="stock" class="form__label">Stock:</label>
+						<input type="text" id="stock" name="stock" placeholder="Ej: 10" class="form__input" value="<%= typeof old == 'undefined' ? '' : old.stock %>">
+					</div>
                     <div class="div__productCreate">
                         <label for="category" class="form__label">Categorías:</label>
                         <select name="category" multiple>
-                            <option value="minutas">Minutas</option>
-                            <option value="vegana">Vegana</option>
-                            <option value="vegetariana">Vegetariana</option>
-                            <option value="bebidas">Bebidas</option>
-                            <option value="etnica">Etnica</option>
-                            <option value="pastas">Pastas</option>
-                            <option value="carne">Carnes</option>
-                            <option value="plato">Al Plato</option>
-                            <option value="otro">Otros</option>
+                            <% categorias.forEach(categoria => { %> 
+                                <option value="<%= categoria.id %>"><%= categoria.name %> </option>
+                            <% }) %>
                         </select>
                     </div>  
-                    <!-- <div class="div__checkLunch">
-                        <input type="checkbox" name="lunch" value="vianda">
-                        <label for="lunch"> Vianda para empresas</label>
-                    </div> -->
-					<div class="div__productCreate">
-						<label for="description" class="form__label">Descripción:</label>
-						<textarea name="description" id="description" class="form__input" cols="30" rows="5"></textarea>
-                    </div>
-                    <div class="div__productCreate">
-						<label for="images" class="form__label">Imagenes:</label>
-						<input type="file" name="images" class="form__input" accept="image/*" multiple>
-					</div>
                     <div class="div__button">
 						<button type="submit" class="buy__now__button">Guardar producto</button>
 					</div>

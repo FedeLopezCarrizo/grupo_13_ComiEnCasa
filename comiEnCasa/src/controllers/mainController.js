@@ -1,6 +1,6 @@
 const controller = {
 	index: (req, res) => {
-		res.render('index');
+		res.render('web/index');
 	},
 	search: (req, res) => {
 		res.render('results')

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head', { css:'userDetail_style', js:'main' } ) %> 
+<body>
+    <div class="container">
+        
+        <!-- header -->
+        <%- include('../partials/header') %> 
+        <!-- /header --> 
+        
+ 
+        <!-- detalle del usuario -->
+        <section class="user__detail"> 
+            <article class="article__user__title">
+                <h2><%= userToView.userName %></h2>
+            </article> 
+            
+            <section class="user__description">    
+                <article class="article__user__img">
+                    <img src="/images/<%= userToView.image %>" class="img__user" alt="Imagen del usuario">
+                </article>
+                <article class="article__user__description">
+                    <h3>Nombre y apellido:</h3>
+                    <p>
+                        <%= userToView.firstName %> <%= userToView.lastName %>
+                    </p>
+                    <h3>Email:</h3>
+                    <p>
+                        <%= userToView.email %>
+                    </p>
+                    <h3>Número de teléfono:</h3>
+                    <p>
+                        <%= userToView.phoneNumber %>
+                    </p>
+                </article>
+            </section>   
+
+            <div class="button__div">
+                <ul class="ul__button">
+                    <li class="li__button"><a href="/users/edit/<%=  userToView.id %>" class="enlace__button">Modificar usuario</a></li> 
+                </ul>                
+            </div>
+        </section>    
+
+        <!-- footer -->
+        <%- include('../partials/footer') %> 
+        <!-- /footer -->
+    </div>
+</body>
+</html>
